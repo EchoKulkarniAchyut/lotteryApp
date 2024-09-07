@@ -12,15 +12,15 @@
     <button type="button" class="btn btn-primary" id="lottery-button" onclick="lotteryRoll()">Click</button>
     
     <script>
-        const target = 6;
         let count = 0;
         function lotteryRoll() {
+            const date = new Date();
+            const target = date.getDay()%10;
             count++;
             const value = Math.floor(Math.random() * 10); // Generate random integer between 0 and 9
             const result = document.getElementById("display-result");
 
             if (value === target) {
-                const date = new Date();
                 const currentDate = date.toLocaleDateString(); // Get readable date
                 const currentTime = date.toLocaleTimeString(); // Get readable time
                 result.innerHTML = `<h3>Hurray!! You won the lottery on ${currentDate} at ${currentTime}</h3><br><h6>Button clicked ${count} times`;
